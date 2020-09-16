@@ -1,0 +1,12 @@
+pyrogram
+aiohttp
+aiohttp[speedups]
+dnspython
+cryptg
+cryptography
+tgcrypto
+pymongo[srv]
+bs4
+lxml
+ujson
+requests
