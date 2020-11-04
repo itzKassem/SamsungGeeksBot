@@ -18,7 +18,7 @@ async def phh(bot, update):
     await git(bot, update , repo, page)
 
 @Client.on_message(filters.command(["gcam", "googlecamera"]))
-async def gacm(bot, update):
+async def gcam(bot, update):
     message = "<b>Google Camera ports for various android devices.</b>\n"
     url = "https://www.celsoazevedo.com/files/android/google-camera/"
     keyboard = [[InlineKeyboardButton(text='GCAM Downloads', url=url)]]
