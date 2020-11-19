@@ -27,17 +27,20 @@ async def start(bot, update):
     userid = update.from_user.id
     name = update.from_user.first_name
     username= update.from_user.username
+    usr_bot_me = await bot.get_me()
+    bot_username = str(usr_bot_me.username)
     if update.chat.type == "private":
-        keyboard = [[InlineKeyboardButton("Help!", callback_data="menu")]]
+        keyboard = [[InlineKeyboardButton("Help!", callback_data="menu")],
+                    [InlineKeyboardButton("Add me to a group", url="http://telegram.me/{}?startgroup=botstart".format(bot_username))]
+        ]
         text="""
 Hey <b>{}</b>!, I'm <b>Galaxy Helper</b>.
 feel free to use me, click on help to find out more on how to use me!
              """.format(name)
         await add(userid,username)
     else:
-        usr_bot_me = await bot.get_me()
-        username = str(usr_bot_me.username)
-        keyboard = [[InlineKeyboardButton("Go PM!", url="t.me/{}?start=help".format(username))]]
+  
+        keyboard = [[InlineKeyboardButton("Go PM!", url="t.me/{}?start=help".format(bot_username))]]
         text="Hey there, I'm alive!\nCheck my <b>PM</b> for help!"
     await bot.send_message(
         chat_id=update.chat.id,
@@ -51,7 +54,7 @@ async def help_menu(bot, update):
     await update.answer(text='Choose a plugin to get help!')
     keyboard = InlineKeyboardMarkup(help_buttons(HELP))
     text="""
-Hello again, <b>I'm Galaxy helper!</b> an all-in-one telegram bot for Samsung users!
+Hi, <b>I'm Galaxy helper!</b> an all-in-one telegram bot for Samsung users!
 I can get you latest Official Firmware, Root, Specs, Or Twrp, and many more things!
 To know more on how to use me check this list!
              """
