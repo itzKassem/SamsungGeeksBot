@@ -4,8 +4,9 @@
 
 import logging
 
-logging.basicConfig(level=logging.INFO,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 import os
@@ -13,14 +14,14 @@ import sys
 from pymongo import MongoClient
 
 logger.info("Loading Configurations...")
-#Use python >=3.8
+# Use python >=3.8
 if sys.version_info[0] < 3 or sys.version_info[1] < 8:
     logger.error(
         "You MUST have a python version of at least 3.8! Multiple features depend on this. Bot quitting."
     )
     quit(1)
 
-ENV = bool(os.environ.get('ENV', False))
+ENV = bool(os.environ.get("ENV", False))
 
 if ENV:
     TOKEN = os.environ.get("TOKEN", "")
@@ -46,4 +47,4 @@ def is_mongo_alive():
     except BaseException as e:
         print(e)
         return False
-    return True    
+    return True

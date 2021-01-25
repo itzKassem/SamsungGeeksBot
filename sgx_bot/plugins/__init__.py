@@ -4,18 +4,25 @@
 
 import logging
 
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logging.basicConfig(
+    level=logging.DEBUG, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
 logger = logging.getLogger(__name__)
+
 
 def __list_all_plugins():
     from os.path import dirname, basename, isfile
     import glob
+
     plugin_paths = glob.glob(dirname(__file__) + "/*.py")
-    all_modules = [basename(f)[:-3] for f in plugin_paths if isfile(f)
-                   and f.endswith(".py")
-                   and not f.endswith('__init__.py')
-                   and not f.endswith('__help__.py')]
+    all_modules = [
+        basename(f)[:-3]
+        for f in plugin_paths
+        if isfile(f)
+        and f.endswith(".py")
+        and not f.endswith("__init__.py")
+        and not f.endswith("__help__.py")
+    ]
     return all_modules
 
 

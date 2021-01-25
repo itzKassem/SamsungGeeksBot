@@ -11,7 +11,6 @@ from sgx_bot import APP_ID, API_HASH, TOKEN
 
 
 class SGX_BOT(Client):
-
     def __init__(self):
         """Set Configs!"""
         name = self.__class__.__name__.lower()
@@ -20,9 +19,8 @@ class SGX_BOT(Client):
             plugins=dict(root=f"{name}/plugins"),
             api_id=APP_ID,
             api_hash=API_HASH,
-            bot_token=TOKEN
-            )
-
+            bot_token=TOKEN,
+        )
 
     async def start(self):
         await super().start()
