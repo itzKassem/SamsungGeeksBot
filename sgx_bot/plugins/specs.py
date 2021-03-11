@@ -1,5 +1,5 @@
-# Copyright (C) 2020 - 2020 KassemSYR. All rights reserved.
-# This file is part of Galaxy Helper bot.
+# (c) 2021 KassemSYR || SamsungGeeksBot
+
 import re
 from requests import get
 from bs4 import BeautifulSoup

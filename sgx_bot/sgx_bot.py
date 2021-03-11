@@ -1,5 +1,4 @@
-# Copyright (C) 2020 - 2020 KassemSYR. All rights reserved.
-# This file is part of Galaxy Helper bot.
+# (c) 2021 KassemSYR || SamsungGeeksBot
 
 from sgx_bot import logger
 
@@ -12,7 +11,6 @@ from sgx_bot import APP_ID, API_HASH, TOKEN
 
 class SGX_BOT(Client):
     def __init__(self):
-        """Set Configs!"""
         name = self.__class__.__name__.lower()
         super().__init__(
             name,
@@ -24,7 +22,7 @@ class SGX_BOT(Client):
 
     async def start(self):
         await super().start()
-
+        
         bot_me = await self.get_me()
         self.set_parse_mode("html")
         logger.info(

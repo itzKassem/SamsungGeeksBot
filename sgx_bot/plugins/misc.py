@@ -1,5 +1,4 @@
-# Copyright (C) 2020 - 2020 KassemSYR. All rights reserved.
-# This file is part of Galaxy Helper bot.
+# (c) 2021 KassemSYR || SamsungGeeksBot
 
 from requests import get
 from pyrogram import Client, filters
@@ -55,9 +54,7 @@ async def guidee(bot, update):
         keyboard += [[InlineKeyboardButton(guide_name, url=guide_link)]]
     await bot.send_message(
         chat_id=update.chat.id,
-        text="""
-Here are some helpful guides!
-             """,
+        text="Here are some helpful guides!",
         reply_markup=InlineKeyboardMarkup(keyboard),
         reply_to_message_id=update.message_id,
     )

@@ -1,20 +1,16 @@
-# Copyright (C) 2020 - 2020 KassemSYR. All rights reserved.
-# This file is part of Galaxy Helper bot.
+# (c) 2021 KassemSYR || SamsungGeeksBot
 
 from pyrogram.types import InlineKeyboardButton
 
 
 class EqInlineKeyboardButton(InlineKeyboardButton):
     def __eq__(self, other):
-        """ """
         return self.text == other.text
 
     def __lt__(self, other):
-        """ """
         return self.text < other.text
 
     def __gt__(self, other):
-        """ """
         return self.text > other.text
 
 
