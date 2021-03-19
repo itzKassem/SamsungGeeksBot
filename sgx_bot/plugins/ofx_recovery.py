@@ -39,12 +39,13 @@ async def ofx(bot, update):
         for release in res["stable"]:
             message += f"<u><b>{release['version']}</b></u>\n"
             message += f"• <b>Date:</b> <code>{release['date']}</code>\n"
-            message += f"• <b>ID:</b> <code>{release['_id']}</code>\n\n"
-            message += f"• <b>Download:</b> <i><a href='{dl_link+release['_id']}'> Direct link</a></i>\n\n"
+            message += f"• <b>ID:</b> <code>{release['_id']}</code>\n"
+            message += f"• <b>Download:</b> <i><a href='{dl_link+release['_id']}'>Direct link</a></i>\n\n"
         keyboard = [
             [
                 InlineKeyboardButton(
-                    text="Download Latest", url=dl_link + res["stable"][0]["_id"]
+                    text=f"Download Latest ({res['stable'][0]['version']})",
+                    url=dl_link + res["stable"][0]["_id"],
                 )
             ]
         ]
