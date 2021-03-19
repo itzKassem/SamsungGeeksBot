@@ -25,29 +25,29 @@ async def ofx(bot, update):
         message = "coudn't find your device, chack device & try!"
         await bot.send_message(chat_id=update.chat.id, text=message)
         return
-    page = get(
-        f"https://api.orangefox.download/v2/device/{device}/releases/stable/last"
-    )
+    page = get(f"https://api.orangefox.download/v2/device/{device}/releases/")
+
     if page.status_code == 404:
         message = f"OrangeFox currently is not avaliable for <code>{device}</code>"
         await bot.send_message(chat_id=update.chat.id, text=message)
         return
     else:
-        message = f"<b>Latest OrangeFox Recovery For {device}</b>\n"
+        dl_link = "https://dl.orangefox.download/"
+        message = f"<b>OrangeFox Recovery Releases For {device}</b>\n"
         message += f"<b>Device:</b> <code>{brand.upper()} {name.upper()}</code>\n"
-        page = loads(page.content)
-        dl_file = page["file_name"]
-        version = page["version"]
-        size = page["size_human"]
-        dl_link = page["url"]
-        date = page["date"]
-        md5 = page["md5"]
-        message += f"<b>Version:</b> <code>{version}</code>\n"
-        message += f"<b>Size:</b> <code>{size}</code>\n"
-        message += f"<b>Date:</b> <code>{date}</code>\n"
-        message += f"<b>File:</b> <code>{dl_file.upper()}</code>\n"
-        message += f"<b>MD5:</b> <code>{md5}</code>\n\n"
-        keyboard = [[InlineKeyboardButton(text="Download", url=dl_link)]]
+        res = loads(page.content)
+        for release in res["stable"]:
+            message += f"<u><b>{release['version']}</b></u>\n"
+            message += f"• <b>Date:</b> <code>{release['date']}</code>\n"
+            message += f"• <b>ID:</b> <code>{release['_id']}</code>\n\n"
+            message += f"• <b>Download:</b> <i><a href='{dl_link+release['_id']}'> Direct link</a></i>\n\n"
+        keyboard = [
+            [
+                InlineKeyboardButton(
+                    text="Download Latest", url=dl_link + res["stable"][0]["_id"]
+                )
+            ]
+        ]
         await bot.send_message(
             chat_id=update.chat.id,
             text=message,

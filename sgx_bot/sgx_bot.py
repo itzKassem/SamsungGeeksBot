@@ -22,7 +22,7 @@ class SGX_BOT(Client):
 
     async def start(self):
         await super().start()
-        
+
         bot_me = await self.get_me()
         self.set_parse_mode("html")
         logger.info(
