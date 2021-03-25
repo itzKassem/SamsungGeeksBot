@@ -20,9 +20,9 @@ async def magisk(bot, update):
         )
         data = get(url + path + ".json").json()
         message += (
-            f'<b>• {magisk_type}</b>:\nMagisk - <a href="{canary + data["magisk"]["link"]}">V{data["magisk"]["version"]}</a> \n'
-            f'App - <a href="{canary + data["app"]["link"]}">v{data["app"]["version"]}</a> \n'
-            f'Uninstaller - <a href="{canary + data["uninstaller"]["link"]}">{magisk_type}</a> \n'
+            f"<b>• {magisk_type}</b>:\n"
+            f'- <a href="{canary + data["app"]["link"]}">APP - v{data["app"]["version"]}</a> \n'
+            f'- <a href="{canary + data["uninstaller"]["link"]}">Uninstaller- {magisk_type}</a> \n'
         )
     await bot.send_message(
         chat_id=update.chat.id, text=message, disable_web_page_preview=True
