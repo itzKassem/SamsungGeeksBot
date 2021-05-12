@@ -17,8 +17,7 @@ async def magisk(bot, update):
         message += (
             f"<b>• {magisk_type}</b>:\n"
             f'- <a href="{data["app"]["link"]}">APP - v{data["app"]["version"]}</a> \n'
-            f'- <a href="{data["uninstaller"]["link"]}">Uninstaller- {magisk_type}</a> \n'
-        )
+            )
     await bot.send_message(
         chat_id=update.chat.id, text=message, disable_web_page_preview=True
     )
