@@ -16,7 +16,7 @@ async def magisk(bot, update):
         data = get(url + path + ".json").json()
         message += (
             f"<b>• {magisk_type}</b>:\n"
-            f'- <a href="{data["app"]["link"]}">APP - v{data["app"]["version"]}</a> \n'
+            f'- <a href="{data["magisk"]["link"]}">APP - v{data["magisk"]["version"]}</a> \n'
             )
     await bot.send_message(
         chat_id=update.chat.id, text=message, disable_web_page_preview=True
